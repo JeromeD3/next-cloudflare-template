@@ -114,10 +114,7 @@ pnpm run deploy
 
 6. 该 token 只会显示一次，请妥善保存
 
-## 💡 贡献
+# 同步上游分支
 
-欢迎提交 Pull Request 或者 Issue 来帮助改进这个项目
-
-## 📄 License
-
-本项目采用 [MIT](LICENSE) 许可证
+git fetch upstream
+git merge upstream/main
