@@ -188,7 +188,11 @@ export async function getAllArticles(locale?: string) {
 // 根据 slug 获取单篇文章
 export async function getArticleBySlug(slug: string) {
   const database = createDb()
-  const result = await database.select().from(posts).where(eq(posts.slug, slug))
+  const result = await database
+    .select()
+    .from(posts)
+    .where(eq(posts.slug, decodeURIComponent(slug)))
+
   return result[0] || null
 }
 
