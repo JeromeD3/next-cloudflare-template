@@ -9,7 +9,7 @@ const environments = [
   'AUTH_SECRET',
   'AUTH_GOOGLE_ID',
   'AUTH_GOOGLE_SECRET',
-  'AUTH_RESEND_KEY',
+  // 'AUTH_RESEND_KEY',
   // 'AUTH_TRUST_HOST',
   // 'GMI_API_KEY',
   'NEXT_PUBLIC_BASE_URL',
