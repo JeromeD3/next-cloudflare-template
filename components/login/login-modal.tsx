@@ -1,6 +1,6 @@
 'use client'
 
-import { LogIn, LogOut } from 'lucide-react'
+import { LogIn, LogOut, Settings } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
@@ -25,13 +25,16 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { useIsMobile } from '@/hooks/use-mobile'
+import { Link } from '@/i18n/navigation'
 
 export default function LoginModal() {
   const [isOpen, setIsOpen] = useState(false)
   const session = useSession()
+  const data = session.data?.user
   const t = useTranslations('login')
   const site = useTranslations('siteInfo')
   const isMobile = useIsMobile()
+  const isAdmin = process.env.NEXT_PUBLIC_ADMIN_ID.split(',').includes(data?.id ?? '')
 
   if (session.status === 'loading') return null
 
@@ -83,6 +86,16 @@ export default function LoginModal() {
               )}
             </div>
           </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+
+          {isAdmin && (
+            <DropdownMenuLabel className="text-muted-foreground text-xs">
+              <Link href="/admin/articles" className="flex items-center gap-2">
+                <Settings className="mr-2 h-4 w-4" />
+                <span>{'admin'}</span>
+              </Link>
+            </DropdownMenuLabel>
+          )}
           <DropdownMenuSeparator />
           <DropdownMenuItem
             className="text-destructive focus:text-destructive cursor-pointer"
