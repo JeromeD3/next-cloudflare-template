@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "deploy:c": "tsx scripts/deploy/index.ts",
-    "db:studio:local": "tsx scripts/db-studio-local.ts",
     "db:studio:remote": "drizzle-kit studio",
+    "db:studio:local": "tsx scripts/db-studio-local.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
