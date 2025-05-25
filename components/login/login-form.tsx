@@ -1,11 +1,12 @@
 'use client'
 
-import { Loader2, LogIn } from 'lucide-react'
+import { Loader2, LogIn, Mail } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 interface LoginFormProps {
   onSuccess?: () => void
@@ -51,13 +52,13 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
         {t('continueWithGoogle')}
       </Button>
 
-      {/* <div className="relative my-6 flex items-center">
+      <div className="relative my-6 flex items-center">
         <div className="border-border flex-grow border-t"></div>
         <span className="text-muted-foreground mx-4 flex-shrink text-xs uppercase">{t('orContinueWith')}</span>
         <div className="border-border flex-grow border-t"></div>
-      </div> */}
+      </div>
 
-      {/* <form onSubmit={handleEmailSignIn} className="space-y-4">
+      <form onSubmit={handleEmailSignIn} className="space-y-4">
         <Input
           type="email"
           placeholder={t('emailPlaceholder')}
@@ -70,7 +71,7 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
           {isLoading.email ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Mail className="mr-2 h-5 w-5" />}
           {t('signInWithEmail')}
         </Button>
-      </form> */}
+      </form>
     </div>
   )
 }
