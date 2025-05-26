@@ -45,7 +45,10 @@
       "continueWithGithub": "Continue with GitHub",
       "orContinueWith": "Or continue with",
       "emailPlaceholder": "Enter your email",
-      "signInWithEmail": "Sign in with Email"
+      "signInWithEmail": "Sign in with Email",
+      "magicLinkSent": "Magic link sent to your email, please check.",
+      "invalidEmail": "Please enter a valid email address.",
+      "signInFailed": "Sign in failed, please try again."
     }
   },
   "common": {
