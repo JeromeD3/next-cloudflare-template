@@ -4,6 +4,7 @@ import { Loader2, LogIn, Mail } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -19,9 +20,8 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
   const [isLoading, setIsLoading] = useState({
     google: false,
     github: false,
-    email: false
+    resend: false
   })
-  const [message, setMessage] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -29,7 +29,6 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
   const handleSignIn = async (provider: 'google' | 'resend') => {
     setIsLoading((prev) => ({ ...prev, [provider]: true }))
     setError(null)
-    setMessage(null)
     try {
       const result = await signIn(provider, {
         ...(provider === 'resend' ? { email } : {}),
@@ -38,7 +37,7 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
 
       if (result?.ok && !result?.error) {
         if (provider === 'resend') {
-          setMessage(t('magicLinkSent'))
+          toast(t('magicLinkSent'))
           setEmail('')
         }
         if (onSuccess) onSuccess()
@@ -82,13 +81,12 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
           onChange={(e) => setEmail(e.target.value)}
           required
           className="w-full"
-          disabled={isLoading.email}
+          disabled={isLoading.resend}
         />
-        <Button type="submit" disabled={isLoading.email} variant="outline" className="w-full">
-          {isLoading.email ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Mail className="mr-2 h-5 w-5" />}
+        <Button type="submit" disabled={isLoading.resend} variant="outline" className="w-full">
+          {isLoading.resend ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Mail className="mr-2 h-5 w-5" />}
           {t('signInWithEmail')}
         </Button>
-        {message && <div className="text-sm text-green-600">{message}</div>}
         {error && <div className="text-sm text-red-600">{error}</div>}
       </form>
     </div>
