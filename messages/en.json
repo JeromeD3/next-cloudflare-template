@@ -6,11 +6,11 @@
     "navigationDescription": "Access the main sections of our website"
   },
   "siteInfo": {
-    "brandName": "Next Template",
-    "description": "Think, Write, Code",
+    "brandName": "HugSim",
+    "description": "Gentle Emotional Support & Companionship",
     "meta": {
-      "title": "Think, Write, Code",
-      "description": "A responsive, lightweight, and accessible front-end framework using Next.js, TypeScript, and Tailwind CSS."
+      "title": "HugSim AI - Your AI Emotional Companion",
+      "description": "A lightweight, gentle, and emotionally-driven AI tool that generates comforting messages through role-playing and context understanding, providing warm emotional support and companionship."
     }
   },
   "footer": {
