@@ -1,6 +1,6 @@
 'use client'
 
-import { LogIn, LogOut, Settings } from 'lucide-react'
+import { LogOut, Settings } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
@@ -112,11 +112,7 @@ export default function LoginModal() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <div className="text-foreground hover:text-primary group relative flex cursor-pointer items-center font-medium transition-colors">
-          <LogIn className="mr-2 h-4 w-4" />
-          {t('login')}
-          <span className="bg-primary absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"></span>
-        </div>
+        <Button className="cursor-pointer">{t('login')}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>

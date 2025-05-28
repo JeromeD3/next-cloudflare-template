@@ -30,6 +30,9 @@ export default function Footer() {
               {t('quickLinks.aboutUs')}
             </Link>
             <Link href="/" className="text-muted-foreground hover:text-primary">
+              {t('quickLinks.blog')}
+            </Link>
+            <Link href="/" className="text-muted-foreground hover:text-primary">
               {t('quickLinks.refundPolicy')}
             </Link>
           </div>

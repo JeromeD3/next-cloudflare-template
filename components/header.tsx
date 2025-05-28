@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 export default async function Header({ className }: { className?: string }) {
   const t = await getTranslations('headers')
 
-  const pcLinkStyle = 'text-foreground hover:text-primary group relative font-medium transition-colors'
+  // const pcLinkStyle = 'text-foreground hover:text-primary group relative font-medium transition-colors'
   const mobileLinkStyle =
     'hover:bg-secondary flex items-center rounded-md px-3 py-3 text-lg font-medium transition-colors'
 
@@ -27,20 +27,20 @@ export default async function Header({ className }: { className?: string }) {
         className
       )}
     >
-      <nav className="hidden w-full items-center justify-between md:flex">
+      <nav className="mx-auto hidden w-full max-w-7xl items-center justify-between md:flex">
         <div className="flex items-center">
           <Logo />
-          <div className="ml-12 flex space-x-8">
+          {/* <div className="ml-12 flex space-x-8">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className={pcLinkStyle}>
                 {link.label}
                 <span className="bg-primary absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
         <div className="flex items-center gap-6">
-          <LocaleSwitcher />
+          {/* <LocaleSwitcher /> */}
           <LoginModal />
         </div>
       </nav>

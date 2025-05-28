@@ -5,12 +5,12 @@ export const locales = [
     code: 'en',
     name: 'English',
     dir: 'ltr'
-  },
-  {
-    code: 'zh',
-    name: '中文',
-    dir: 'ltr'
   }
+  // {
+  //   code: 'zh',
+  //   name: '中文',
+  //   dir: 'ltr'
+  // }
 ]
 
 export const routing = defineRouting({
