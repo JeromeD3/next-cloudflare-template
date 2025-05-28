@@ -13,7 +13,7 @@ const Logo = () => {
 
   return (
     <Link href="/" className="flex items-center gap-2">
-      <Image alt="logo" src="/logo.svg" width={logoSize} height={logoSize} />
+      <Image alt="logo" src="/logo.png" width={logoSize} height={logoSize} />
       <p className="font-semibold md:text-lg">{t('brandName')}</p>
     </Link>
   )

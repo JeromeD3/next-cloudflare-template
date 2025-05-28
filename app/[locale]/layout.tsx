@@ -30,12 +30,12 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: t('meta.description'),
     icons: {
-      icon: '/logo.svg'
+      icon: '/logo.png'
     },
     authors: [{ name: 'Felix', url: 'https://github.com/Shiinama' }],
     creator: 'Felix',
     openGraph: {
-      images: ['/logo.svg']
+      images: ['/logo.png']
     },
     alternates: {
       languages: {
