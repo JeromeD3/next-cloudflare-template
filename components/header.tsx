@@ -1,6 +1,7 @@
 import { Menu } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 
+import Container from '@/components/container'
 import { LocaleSwitcher } from '@/components/locale-switcher'
 import LoginModal from '@/components/login/login-modal'
 import Logo from '@/components/logo'
@@ -23,14 +24,15 @@ export default async function Header({ className }: { className?: string }) {
   return (
     <header
       className={cn(
-        'bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b px-4 backdrop-blur sm:px-6 lg:px-18',
+        'bg-background/90 supports-[backdrop-filter]:bg-background/20 sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b px-4 backdrop-blur sm:px-6 lg:px-18',
         className
       )}
     >
-      <nav className="mx-auto hidden w-full max-w-7xl items-center justify-between md:flex">
-        <div className="flex items-center">
-          <Logo />
-          {/* <div className="ml-12 flex space-x-8">
+      <Container>
+        <nav className="hidden w-full items-center justify-between md:flex">
+          <div className="flex items-center">
+            <Logo />
+            {/* <div className="ml-12 flex space-x-8">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className={pcLinkStyle}>
                 {link.label}
@@ -38,12 +40,13 @@ export default async function Header({ className }: { className?: string }) {
               </Link>
             ))}
           </div> */}
-        </div>
-        <div className="flex items-center gap-6">
-          {/* <LocaleSwitcher /> */}
-          <LoginModal />
-        </div>
-      </nav>
+          </div>
+          <div className="flex items-center gap-6">
+            {/* <LocaleSwitcher /> */}
+            <LoginModal />
+          </div>
+        </nav>
+      </Container>
 
       <div className="flex w-full items-center justify-between gap-4 md:hidden">
         <Logo />

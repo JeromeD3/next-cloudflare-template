@@ -7,7 +7,7 @@ export default function Footer() {
   const t = useTranslations('footer')
 
   return (
-    <footer className="px-4 py-8 sm:px-6 lg:px-18">
+    <footer className="">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-3">
         <div className="flex flex-col items-start space-y-2">
           <Logo />
@@ -16,8 +16,11 @@ export default function Footer() {
 
         <div className="flex flex-col items-start space-y-2">
           <h3 className="text-foreground text-lg font-semibold">{t('contact.title')}</h3>
-          <p className="text-muted-foreground mt-2">{t('contact.intro')}</p>
-          <p className="text-primary mt-2 hover:underline">{t('contact.email')}</p>
+          {/* <p className="text-muted-foreground mt-2">{t('contact.intro')}</p> */}
+          <Link href="mailto:dengxb19@foxmail.com" className="text-muted-foreground hover:text-primary">
+            {'Email'}
+          </Link>
+          {/* <p className="text-primary mt-2 hover:underline">{t('contact.email')}</p> */}
         </div>
 
         <div className="flex flex-col items-start space-y-2">
@@ -29,7 +32,7 @@ export default function Footer() {
             <Link href="/" className="text-muted-foreground hover:text-primary">
               {t('quickLinks.aboutUs')}
             </Link>
-            <Link href="/" className="text-muted-foreground hover:text-primary">
+            <Link href="/blogs" className="text-muted-foreground hover:text-primary">
               {t('quickLinks.blog')}
             </Link>
             <Link href="/" className="text-muted-foreground hover:text-primary">

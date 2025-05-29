@@ -92,7 +92,7 @@ export default function LoginModal() {
             <DropdownMenuLabel className="text-muted-foreground text-xs">
               <Link href="/admin/articles" className="flex items-center gap-2">
                 <Settings className="mr-2 h-4 w-4" />
-                <span>{'admin'}</span>
+                <span>{'Dashboard'}</span>
               </Link>
             </DropdownMenuLabel>
           )}
@@ -112,10 +112,10 @@ export default function LoginModal() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className="cursor-pointer">{t('login')}</Button>
+        <Button>{t('login')}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
-        <DialogHeader>
+        <DialogHeader className="mb-4">
           <DialogTitle className="text-center text-2xl font-bold">{site('brandName')}</DialogTitle>
           <DialogDescription className="text-center">{t('modal.description')}</DialogDescription>
         </DialogHeader>

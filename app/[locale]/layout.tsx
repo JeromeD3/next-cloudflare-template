@@ -2,10 +2,13 @@ import { notFound } from 'next/navigation'
 import { SessionProvider } from 'next-auth/react'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
+import NextTopLoader from 'nextjs-toploader'
 
+import Container from '@/components/container'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import { Toaster } from '@/components/ui/sonner'
+import { StarsBackground } from '@/components/ui/stars-background'
 import { locales, routing } from '@/i18n/routing'
 
 import type { Metadata, Viewport } from 'next'
@@ -32,8 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: '/logo.png'
     },
-    authors: [{ name: 'Felix', url: 'https://github.com/Shiinama' }],
-    creator: 'Felix',
+    authors: [{ name: 'Jerome', url: 'https://github.com/JeromeD3' }],
+    creator: 'Jerome',
     openGraph: {
       images: ['/logo.png']
     },
@@ -64,17 +67,41 @@ export default async function RootLayout({
   return (
     <html lang={currentLocale?.code ?? 'en'} dir={currentLocale?.dir || 'ltr'} suppressHydrationWarning>
       <body className="antialiased">
+        <NextTopLoader color="#FF1F56" />
         <NextIntlClientProvider>
           <SessionProvider>
-            <Header />
-            <main className="mx-auto flex w-full max-w-(--breakpoint-xl) flex-1 flex-col px-2.5 py-8 md:px-20">
-              {children}
-            </main>
-            <Footer />
+            <StarsBackground className="-z-10" />
+            <div className="relative">
+              <Header />
+              <main className="mx-auto flex w-full max-w-(--breakpoint-xl) flex-1 flex-col px-2.5 py-8 md:px-20">
+                <Background />
+                {children}
+              </main>
+            </div>
+
+            <Container>
+              <Footer />
+            </Container>
           </SessionProvider>
           <Toaster richColors />
         </NextIntlClientProvider>
       </body>
     </html>
+  )
+}
+
+const Background = () => {
+  return (
+    <div className="absolute top-0 left-0 -z-20 h-full w-full transition-all">
+      <div className="h-full w-full overflow-hidden object-cover">
+        <img
+          src="/landing-bg.png"
+          alt="background image"
+          loading="lazy"
+          className="h-full w-full scale-110 opacity-80 blur-xl"
+          style={{ opacity: 1, transform: 'translateZ(1px)' }}
+        />
+      </div>
+    </div>
   )
 }

@@ -35,15 +35,11 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
         redirect: false
       })
 
-      if (result?.ok && !result?.error) {
-        if (provider === 'resend') {
-          toast(t('magicLinkSent'))
-          setEmail('')
-        }
-        if (onSuccess) onSuccess()
-      } else {
-        setError(result?.error || t('signInFailed'))
+      if (provider === 'resend') {
+        toast(t('magicLinkSent'))
+        setEmail('')
       }
+      if (onSuccess) onSuccess()
     } catch (error) {
       setError(t('signInFailed'))
     } finally {
@@ -61,9 +57,14 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
   }
 
   return (
-    <div className="space-y-6">
-      <Button onClick={() => handleSignIn('google')} disabled={isLoading.google} variant="outline" className="w-full">
-        {isLoading.google ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <LogIn className="mr-2 h-5 w-5" />}
+    <div className="">
+      <Button
+        onClick={() => handleSignIn('google')}
+        disabled={isLoading.google}
+        variant="outline"
+        className="bg-primary/90 hover:bg-primary w-full py-6"
+      >
+        {isLoading.google ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <LogIn className="mr-2 h-5 w-5" />}
         {t('continueWithGoogle')}
       </Button>
 
@@ -80,10 +81,10 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full"
+          className="w-full py-6"
           disabled={isLoading.resend}
         />
-        <Button type="submit" disabled={isLoading.resend} variant="outline" className="w-full">
+        <Button type="submit" disabled={isLoading.resend} variant="outline" className="w-full p-6">
           {isLoading.resend ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Mail className="mr-2 h-5 w-5" />}
           {t('signInWithEmail')}
         </Button>
