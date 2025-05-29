@@ -7,6 +7,7 @@ import NextTopLoader from 'nextjs-toploader'
 import Container from '@/components/container'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
+import Background from '@/components/ui/LandingBackground'
 import { Toaster } from '@/components/ui/sonner'
 import { StarsBackground } from '@/components/ui/stars-background'
 import { locales, routing } from '@/i18n/routing'
@@ -87,21 +88,5 @@ export default async function RootLayout({
         </NextIntlClientProvider>
       </body>
     </html>
-  )
-}
-
-const Background = () => {
-  return (
-    <div className="absolute top-0 left-0 -z-20 h-full w-full transition-all">
-      <div className="h-full w-full overflow-hidden object-cover">
-        <img
-          src="/landing-bg.png"
-          alt="background image"
-          loading="lazy"
-          className="h-full w-full scale-110 opacity-80 blur-xl"
-          style={{ opacity: 1, transform: 'translateZ(1px)' }}
-        />
-      </div>
-    </div>
   )
 }
