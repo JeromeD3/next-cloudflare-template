@@ -7,7 +7,6 @@ import NextTopLoader from 'nextjs-toploader'
 import Container from '@/components/container'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
-import Background from '@/components/ui/LandingBackground'
 import { Toaster } from '@/components/ui/sonner'
 import { StarsBackground } from '@/components/ui/stars-background'
 import { locales, routing } from '@/i18n/routing'
@@ -75,7 +74,6 @@ export default async function RootLayout({
             <div className="relative">
               <Header />
               <main className="mx-auto flex w-full max-w-(--breakpoint-xl) flex-1 flex-col px-2.5 py-8 md:px-20">
-                <Background />
                 {children}
               </main>
             </div>
