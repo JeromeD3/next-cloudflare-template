@@ -33,7 +33,7 @@
         "binding": "static"
       },
       {
-        "bucket_name": "cache_isr",
+        "bucket_name": "cache-isr",
         "binding": "NEXT_INC_CACHE_R2_BUCKET"
       }
     ],
