@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 import LoginForm from '@/components/login/login-form'
+import Logo from '@/components/logo'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import {
@@ -116,7 +117,9 @@ export default function LoginModal() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader className="mb-4">
-          <DialogTitle className="text-center text-2xl font-bold">{site('brandName')}</DialogTitle>
+          <DialogTitle className="mx-auto text-2xl font-bold">
+            <Logo></Logo>
+          </DialogTitle>
           <DialogDescription className="text-center">{t('modal.description')}</DialogDescription>
         </DialogHeader>
         <LoginForm onSuccess={() => setIsOpen(false)} />

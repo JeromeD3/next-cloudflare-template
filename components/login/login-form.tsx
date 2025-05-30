@@ -1,6 +1,6 @@
 'use client'
-
-import { Loader2, LogIn, Mail } from 'lucide-react'
+import { Icon } from '@iconify-icon/react'
+import { Loader2, Mail } from 'lucide-react'
 import { signIn } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
@@ -64,7 +64,11 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
         variant="outline"
         className="bg-primary/90 hover:bg-primary w-full py-6"
       >
-        {isLoading.google ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <LogIn className="mr-2 h-5 w-5" />}
+        {isLoading.google ? (
+          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+        ) : (
+          <Icon icon="dashicons:google" width="20" height="20"></Icon>
+        )}
         {t('continueWithGoogle')}
       </Button>
 
