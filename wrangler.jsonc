@@ -32,23 +32,7 @@
         "bucket_name": "static",
         "binding": "static"
       },
-    //   {
-    //     "bucket_name": "cache-isr",
-    //     "binding": "NEXT_INC_CACHE_R2_BUCKET"
-    //   }
     ],
-    // "durable_objects": {
-    //     "bindings": [
-    //         {
-    //             "name": "NEXT_CACHE_DO_QUEUE",
-    //             "class_name": "DOQueueHandler"
-    //         },
-    //         {
-    //             "name": "NEXT_TAG_CACHE_DO_SHARDED",
-    //             "class_name": "DOShardedTagCache"
-    //         }
-    //     ]
-    // },
     "migrations": [
         {
             "tag": "v1",
