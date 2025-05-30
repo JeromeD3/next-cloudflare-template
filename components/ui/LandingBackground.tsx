@@ -12,7 +12,11 @@ const Background = () => {
       style={{ willChange: 'opacity, transform' }}
     >
       <div className="h-full w-full overflow-hidden object-cover">
-        <img src="/landing-bg.png" alt="background image" className="h-full w-full blur-xl" />
+        <img
+          src={`${process.env.NEXT_PUBLIC_R2_DOMAIN}/landing-bg.png`}
+          alt="background image"
+          className="h-full w-full blur-xl"
+        />
       </div>
     </motion.div>
   )
