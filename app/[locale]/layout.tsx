@@ -8,6 +8,7 @@ import { Providers } from '@/app/[locale]/providers'
 import { ChatSidebar } from '@/components/chat-sidebar'
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import { Toaster } from '@/components/ui/sonner'
+import { StarsBackground } from '@/components/ui/stars-background'
 import { locales, routing } from '@/i18n/routing'
 
 import type { Metadata, Viewport } from 'next'
@@ -69,7 +70,7 @@ export default async function RootLayout({
         <NextTopLoader color="#FF1F56" showSpinner={false} />
         <NextIntlClientProvider>
           <Providers>
-            {/* <StarsBackground className="-z-10" /> */}
+            <StarsBackground className="-z-10" />
             <div className="flex h-dvh w-full">
               <ChatSidebar />
               <main className="relative flex flex-1 flex-col">

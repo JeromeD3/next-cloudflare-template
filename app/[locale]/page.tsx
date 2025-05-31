@@ -1,15 +1,11 @@
-import { getTranslations } from 'next-intl/server'
-
+import Chat from '@/components/chat/chat'
 import Background from '@/components/ui/LandingBackground'
 
-export default async function Home() {
-  const t = await getTranslations('HomePage')
+export default function Home() {
   return (
     <>
       <Background />
-      <div className="bg-zGray-950 relative flex min-h-svh w-full items-center justify-center text-5xl">
-        {t('title')}
-      </div>
+      <Chat />
     </>
   )
 }
