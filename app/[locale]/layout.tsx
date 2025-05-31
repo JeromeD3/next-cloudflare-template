@@ -67,7 +67,7 @@ export default async function RootLayout({
   return (
     <html lang={currentLocale?.code ?? 'en'} dir={currentLocale?.dir || 'ltr'} suppressHydrationWarning>
       <body className="antialiased">
-        <NextTopLoader color="#FF1F56" />
+        <NextTopLoader color="#FF1F56" showSpinner={false} />
         <NextIntlClientProvider>
           <SessionProvider>
             <StarsBackground className="-z-10" />

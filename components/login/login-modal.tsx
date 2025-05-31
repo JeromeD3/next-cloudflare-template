@@ -1,10 +1,11 @@
 'use client'
 
-import { LogOut, Settings } from 'lucide-react'
+import { ChartBar, LogOut, Settings } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
+import { getUserAnalysisUsage } from '@/actions/userAnalysis'
 import LoginForm from '@/components/login/login-form'
 import Logo from '@/components/logo'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
@@ -25,6 +26,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import { MAX_USAGE_COUNT } from '@/config/variable'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { Link } from '@/i18n/navigation'
 
@@ -36,6 +38,21 @@ export default function LoginModal() {
   const site = useTranslations('siteInfo')
   const isMobile = useIsMobile()
   const isAdmin = process.env.NEXT_PUBLIC_ADMIN_ID.split(',').includes(data?.id ?? '')
+
+  const [usageCount, setUsageCount] = useState(0)
+  const fetchUsage = async (id: string) => {
+    try {
+      const count = await getUserAnalysisUsage(id)
+      setUsageCount(count)
+    } catch (error) {
+      console.error('errorFetchingUsage', error)
+    }
+  }
+  useEffect(() => {
+    if (data?.id) {
+      fetchUsage(data.id)
+    }
+  }, [data?.id])
 
   if (session.status === 'loading') return null
 
@@ -88,16 +105,22 @@ export default function LoginModal() {
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-
-          {isAdmin && (
-            <DropdownMenuLabel className="text-muted-foreground text-xs">
-              <Link href="/admin/articles" className="flex items-center gap-2">
-                <Settings className="mr-2 h-4 w-4" />
-                <span>{'Dashboard'}</span>
-              </Link>
-            </DropdownMenuLabel>
-          )}
+          <DropdownMenuLabel className="text-muted-foreground flex items-center gap-2 text-xs">
+            <ChartBar className="mr-2 h-4 w-4" />
+            <span>{`${usageCount} / ${MAX_USAGE_COUNT} Free usage`}</span>
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
+          {isAdmin && (
+            <>
+              <DropdownMenuLabel className="text-muted-foreground text-xs">
+                <Link href="/admin/articles" className="flex items-center gap-2">
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>{'Dashboard'}</span>
+                </Link>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+            </>
+          )}
           <DropdownMenuItem
             className="text-destructive focus:text-destructive cursor-pointer"
             onClick={() => signOut()}

@@ -3,6 +3,7 @@ import NextAuth from 'next-auth'
 import Google from 'next-auth/providers/google'
 import ResendProvider from 'next-auth/providers/resend'
 
+import { createUserAnalysisUsage } from '@/actions/userAnalysis'
 import { createDb } from '@/lib/db'
 
 import { accounts, sessions, users, verificationTokens } from './db/schema'
@@ -39,6 +40,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth(() => {
           session.user.id = token.id as string
         }
         return session
+      }
+    },
+    events: {
+      createUser: async ({ user }) => {
+        // Create a usage record for the new user
+        if (user.id) {
+          await createUserAnalysisUsage(user.id)
+        }
       }
     }
   }
