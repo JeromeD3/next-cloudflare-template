@@ -2,7 +2,7 @@
 
 import { eq } from 'drizzle-orm'
 
-import { MAX_USAGE_COUNT } from '@/config/variable'
+import { MAX_USAGE_COUNT } from '@/config/constants'
 import { createDb } from '@/lib/db'
 import { userAnalysisUsage } from '@/lib/db/schema'
 

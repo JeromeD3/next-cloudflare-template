@@ -1,14 +1,13 @@
+import { Menu } from 'lucide-react'
 import { notFound } from 'next/navigation'
-import { SessionProvider } from 'next-auth/react'
-import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 import NextTopLoader from 'nextjs-toploader'
 
-import Container from '@/components/container'
-import Footer from '@/components/footer'
-import Header from '@/components/header'
+import { Providers } from '@/app/[locale]/providers'
+import { ChatSidebar } from '@/components/chat-sidebar'
+import { SidebarTrigger } from '@/components/ui/sidebar'
 import { Toaster } from '@/components/ui/sonner'
-import { StarsBackground } from '@/components/ui/stars-background'
 import { locales, routing } from '@/i18n/routing'
 
 import type { Metadata, Viewport } from 'next'
@@ -69,9 +68,22 @@ export default async function RootLayout({
       <body className="antialiased">
         <NextTopLoader color="#FF1F56" showSpinner={false} />
         <NextIntlClientProvider>
-          <SessionProvider>
-            <StarsBackground className="-z-10" />
-            <div className="relative">
+          <Providers>
+            {/* <StarsBackground className="-z-10" /> */}
+            <div className="flex h-dvh w-full">
+              <ChatSidebar />
+              <main className="relative flex flex-1 flex-col">
+                <div className="absolute top-4 left-4 z-50">
+                  <SidebarTrigger>
+                    <button className="bg-muted hover:bg-accent flex h-8 w-8 items-center justify-center rounded-full transition-colors">
+                      <Menu className="h-4 w-4" />
+                    </button>
+                  </SidebarTrigger>
+                </div>
+                <div className="flex flex-1 justify-center">{children}</div>
+              </main>
+            </div>
+            {/* <div className="relative">
               <Header />
               <main className="mx-auto flex w-full max-w-(--breakpoint-xl) flex-1 flex-col px-2.5 py-8 md:px-20">
                 {children}
@@ -80,8 +92,8 @@ export default async function RootLayout({
 
             <Container>
               <Footer />
-            </Container>
-          </SessionProvider>
+            </Container> */}
+          </Providers>
           <Toaster richColors />
         </NextIntlClientProvider>
       </body>
