@@ -201,7 +201,7 @@ export function ChatSidebar() {
                   <Button variant="ghost" className="flex h-8 w-8 items-center justify-center p-0">
                     <Avatar className="bg-secondary/60 h-6 w-6 rounded-lg">
                       <AvatarImage src={user?.image ?? ''} alt="logo" />
-                      <AvatarFallback>{'logo'}</AvatarFallback>
+                      <AvatarFallback>{user?.name?.[0] ?? ''}</AvatarFallback>
                     </Avatar>
                   </Button>
                 ) : (
