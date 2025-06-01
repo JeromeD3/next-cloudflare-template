@@ -84,3 +84,17 @@
     @apply bg-background text-foreground flex min-h-screen flex-col;
   }
 }
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    /* Use Firefox-specific scrollbar hiding when supported */
+    scrollbar-width: none;
+  }
+}
