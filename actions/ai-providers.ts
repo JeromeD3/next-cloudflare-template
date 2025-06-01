@@ -2,12 +2,12 @@ import { createDeepSeek } from '@ai-sdk/deepseek'
 import { customProvider } from 'ai'
 
 const deepseekClient = createDeepSeek({
-  baseURL: 'https://api.gmi-serving.com/v1',
-  apiKey: process.env.GMI_API_KEY
+  baseURL: 'https://openrouter.ai/api/v1',
+  apiKey: process.env.OPENROUTER_API_KEY
 })
 
 const languageModels = {
-  deepseek: deepseekClient('deepseek-ai/DeepSeek-Prover-V2-671B')
+  deepseek: deepseekClient('deepseek/deepseek-r1-0528-qwen3-8b:free')
 }
 
 export const model = customProvider({
