@@ -172,7 +172,7 @@ export const ModelPicker = ({ selectedModel, setSelectedModel }: ModelPickerProp
                 </div>
 
                 {/* Capability badges */}
-                <div className="mt-2 mb-3 flex flex-wrap gap-1">
+                {/* <div className="mt-2 mb-3 flex flex-wrap gap-1">
                   {currentModelDetails.capabilities.map((capability) => (
                     <span
                       key={capability}
@@ -189,21 +189,21 @@ export const ModelPicker = ({ selectedModel, setSelectedModel }: ModelPickerProp
 
                 <div className="text-foreground/90 mb-3 hidden text-xs leading-relaxed md:block">
                   {currentModelDetails.description}
-                </div>
+                </div> */}
               </div>
 
-              <div className="bg-muted/40 hidden rounded-md p-2 md:block">
+              {/* <div className="bg-muted/40 hidden rounded-md p-2 md:block">
                 <div className="text-muted-foreground flex items-center justify-between text-[10px]">
                   <span>{'API Version:'}</span>
                   <code className="bg-background/80 rounded px-2 py-0.5 font-mono text-[10px]">
                     {currentModelDetails.apiVersion}
                   </code>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Condensed model details for mobile only */}
-            <div className="border-border/30 border-t p-3 sm:hidden">
+            {/* <div className="border-border/30 border-t p-3 sm:hidden">
               <div className="mb-2 flex flex-wrap gap-1">
                 {currentModelDetails.capabilities.slice(0, 4).map((capability) => (
                   <span
@@ -223,7 +223,7 @@ export const ModelPicker = ({ selectedModel, setSelectedModel }: ModelPickerProp
                   </span>
                 )}
               </div>
-            </div>
+            </div> */}
           </div>
         </SelectContent>
       </Select>

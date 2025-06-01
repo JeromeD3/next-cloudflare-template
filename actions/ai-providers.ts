@@ -28,9 +28,9 @@ export interface ModelInfo {
 export const modelDetails: Record<keyof typeof languageModels, ModelInfo> = {
   deepseek: {
     provider: 'DeepSeek',
-    name: 'DeepSeek Prover V2-671B',
-    description: "DeepSeek's Prover V2-671B with good balance of capabilities, including vision.",
-    apiVersion: 'deepseek-ai/DeepSeek-Prover-V2-671B',
-    capabilities: ['Reasoning', 'Efficient', 'Agentic']
+    name: 'DeepSeek R1-0528',
+    description: "DeepSeek's R1-0528-Qwen3-8B with good balance of capabilities, including vision.",
+    apiVersion: 'deepseek-ai/DeepSeek-R1-0528-Qwen3-8B',
+    capabilities: ['Efficient', 'Agentic']
   }
 }
