@@ -8,10 +8,7 @@ import { cn } from '@/lib/utils'
 
 const components: Partial<Components> = {
   pre: ({ children, ...props }) => (
-    <pre
-      className="black:bg-zinc-800/50 my-1.5 overflow-x-auto rounded-lg bg-zinc-100 p-2.5 text-sm dark:bg-zinc-800/50"
-      {...props}
-    >
+    <pre className="black:bg-zinc-800/50 my-1.5 overflow-x-auto rounded-lg bg-zinc-800/50 p-2.5 text-sm" {...props}>
       {children}
     </pre>
   ),
