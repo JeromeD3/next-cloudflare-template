@@ -110,3 +110,53 @@ export const userAnalysisUsage = sqliteTable('userAnalysisUsage', {
     .references(() => users.id, { onDelete: 'cascade' }),
   usageCount: integer('usageCount').notNull().default(0)
 })
+
+export const chats = sqliteTable('chats', {
+  id: text('id')
+    .primaryKey()
+    .notNull()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text('user_id').notNull(),
+  title: text('title').notNull().default('New Chat'),
+  createdAt: integer('created_at', { mode: 'timestamp_ms' })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull()
+})
+export type Chat = typeof chats.$inferSelect
+
+export const messages = sqliteTable('messages', {
+  id: text('id')
+    .primaryKey()
+    .notNull()
+    .$defaultFn(() => crypto.randomUUID()),
+  chatId: text('chat_id')
+    .notNull()
+    .references(() => chats.id, { onDelete: 'cascade' }),
+  role: text('role').notNull(), // user, assistant, or tool
+  parts: text('parts', { mode: 'json' }).notNull().$type<MessagePart[]>(), // parts 现在支持 JSON
+  createdAt: integer('created_at', { mode: 'timestamp_ms' })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull()
+})
+
+// Types for structured message content
+export type MessagePart = {
+  type: string
+  text?: string
+  toolCallId?: string
+  toolName?: string
+  args?: any
+  result?: any
+  [key: string]: any
+}
+export type Message = typeof messages.$inferSelect
+export type DBMessage = {
+  id: string
+  chatId: string
+  role: string
+  parts: MessagePart[]
+  createdAt: Date
+}
