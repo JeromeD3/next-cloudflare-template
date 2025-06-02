@@ -34,16 +34,14 @@ type ChatWithMessages = Chat & {
 export async function saveMessages({ messages: dbMessages }: { messages: Array<DBMessage> }) {
   const db = createDb()
   try {
-    if (dbMessages.length > 0) {
-      const chatId = dbMessages[0].chatId
+    // if (dbMessages.length > 0) {
+    // const chatId = dbMessages[0].chatId
 
-      // First delete any existing messages for this chat
-      await db.delete(messages).where(eq(messages.chatId, chatId))
+    // First delete any existing messages for this chat
+    // await db.delete(messages).where(eq(messages.chatId, chatId))
 
-      // Then insert the new messages
-      return await db.insert(messages).values(dbMessages)
-    }
-    return null
+    // Then insert the new messages
+    return await db.insert(messages).values(dbMessages)
   } catch (error) {
     console.error('Failed to save messages in database', error)
     throw error
