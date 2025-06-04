@@ -2,10 +2,6 @@
   "name": "next-cloudflare-template",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": ">=20.0.0",
-    "pnpm": ">=9.0.0 <10.0.0"
-  },
   "scripts": {
     "dev": "next dev --turbopack",
     "deploy:c": "tsx scripts/deploy/index.ts",
@@ -52,7 +48,6 @@
     "ai": "^4.3.16",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "drizzle-orm": "^0.43.1",
     "fast-deep-equal": "^3.1.3",

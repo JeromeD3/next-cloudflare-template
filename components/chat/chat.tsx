@@ -155,6 +155,7 @@ export default function Chat() {
     <div className="mx-auto flex h-dvh w-full max-w-3xl flex-col justify-center px-4 sm:px-6 md:py-4">
       {messages.length === 0 && !isLoadingChat ? (
         <div className="mx-auto w-full max-w-xl">
+          <h1 className="text-center text-2xl font-bold">{'What can I help with?'}</h1>
           <form onSubmit={handleFormSubmit} className="mx-auto mt-4 w-full">
             <Textarea
               selectedModel={selectedModel}

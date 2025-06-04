@@ -3,8 +3,6 @@ import { ArrowUp, Loader2 } from 'lucide-react'
 import { modelID } from '@/actions/ai-providers'
 import { Textarea as ShadcnTextarea } from '@/components/ui/textarea'
 
-import { ModelPicker } from './model-picker'
-
 interface InputProps {
   input: string
   handleInputChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
@@ -29,7 +27,7 @@ export const Textarea = ({
   return (
     <div className="relative w-full">
       <ShadcnTextarea
-        className="bg-background/50 dark:bg-muted/50 border-input focus-visible:ring-ring placeholder:text-muted-foreground w-full resize-none rounded-2xl pt-4 pr-12 pb-16 backdrop-blur-sm"
+        className="bg-background/50 dark:bg-muted/50 placeholder:text-muted-foreground w-full resize-none rounded-2xl border-0 pt-4 pr-12 pb-16 !ring-0 backdrop-blur-sm"
         value={input}
         autoFocus
         placeholder="Send a message..."
@@ -41,7 +39,7 @@ export const Textarea = ({
           }
         }}
       />
-      <ModelPicker setSelectedModel={setSelectedModel} selectedModel={selectedModel} />
+      {/* <ModelPicker setSelectedModel={setSelectedModel} selectedModel={selectedModel} /> */}
 
       <button
         type={isStreaming ? 'button' : 'submit'}
