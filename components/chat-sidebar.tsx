@@ -1,6 +1,5 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
 import { MessageSquare, PlusCircle, Trash2, ChevronsUpDown, LogOut } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 
@@ -113,15 +112,9 @@ export function ChatSidebar() {
                   )}
                 </div>
               ) : (
-                <AnimatePresence initial={false}>
+                <>
                   {chats.map((chat) => (
-                    <motion.div
-                      key={chat.id}
-                      initial={{ opacity: 0, height: 0, y: -10 }}
-                      animate={{ opacity: 1, height: 'auto', y: 0 }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
+                    <div key={chat.id} className="animate-fadeIn animate-duration-200">
                       <SidebarMenuItem>
                         <SidebarMenuButton
                           asChild
@@ -168,9 +161,9 @@ export function ChatSidebar() {
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
-                    </motion.div>
+                    </div>
                   ))}
-                </AnimatePresence>
+                </>
               )}
             </SidebarMenu>
           </SidebarGroupContent>
